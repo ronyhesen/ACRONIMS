@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKRONYMS</title>
+    <link rel="stylesheet" href="index_.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>ACRONYMS</h1>
+        <input type="text" id="abbreviation" class="pop1" placeholder="Enter the shortcut here : " autocomplete="off">
+        
+        <center>   
+            <button class="custom-button" onclick="showTranslation()">
+                <span class="button-content">
+                    <span class="button-text">Get Started</span>
+                    <span class="button-icon">→</span>
+                </span>
+                <span class="button-background"></span>
+            </button>  
+        </center>
+        
+        <div id="result" class="result"></div>
+        <h6> مطوري الموقع : روني  &  فريد</h6>
+</div>
+     
+<script>
+    // قاموس الاختصارات
+    const dictionary = {
+        "MODEM": "Modulator-Demodulator",
+        "LASER": "Light Amplification by Stimulated Emission of Radiation",
+        "ADSL": "Asymmetric Digital Subscriber Line",
+        "AI": "Artificail Intelligence",
+        "ATM": "Aotomated Teller Machine",
+        "BASIC": "Beginner's All-purpose Symbolic Instruction Code",
+        "BIOS": "Basic Input/Output System",
+        "CD": "Compact Disc",
+        "CPU": "Central Processing Unit",
+        "CU": "Control Unit",
+        "CSS": "Cascading Style Sheets",
+        "DDR": "Double Data Rate (RAM)",
+        "DNS": "Domain Name System",
+        "DVD": "Digital Versatile Disc",
+        "FAQ": "Frequently Asked Questions",
+        "GIF": "Graphic Interchange Format",
+        "GPS": "Global Positioning System",
+        "GSM": "Global System for Mobile Communications",
+        "HDD": "Hard Disk Drive",
+        "HTML": "HyperText Markup Language",
+        "HTTP": "HyperText Transfer Protocol",
+        "IP": "Internet Protocol",
+        "IR": "Instruction Register",
+        "IT": "Information Technology",
+        "JPG": "Joint Photographic Experts Group",
+        "LAN": "Local Area Network", 
+        "LCD": "Liquid Crystal Display",
+        "OCR": "Optical Character Recognition",
+        "OLED": "Organic Light Emitting Diode",
+        "OS": "Operating System",
+        "PAN": "Personal Area Network",
+        "PC": "Personal Computer",
+        "PCL": "Printer Control Language",
+        "PDA": "Personal Digital Assistant",
+        "PIN": "Personal Identification Number",
+        "RAM": "Random Access Memory",
+        "ROM": "Read-Only Memory",
+        "RPM": "Revolutions Per Minute",
+        "SIM": "Subscriber Ident Module",
+        "VGA": "Video Graphics Adapter",
+        "WAN": "Wide Area Network",
+        "Wi-Fi": "Wireless Fidelity",
+        "WP": "Word Pressing",
+        "WWW": "World Wide Web",
+        "XWL": "Extensible Markup Language"
+    };
+
+    function showTranslation() {
+        // الحصول على الاختصار المدخل من المستخدم
+        const abbreviation = document.getElementById("abbreviation").value.trim().toUpperCase();
+        const resultDiv = document.getElementById("result");
+
+        // التحقق من الاختصار في القاموس
+        if (dictionary[abbreviation]) {
+            resultDiv.innerHTML = `<strong>${abbreviation}</strong> : <strong>${dictionary[abbreviation]}</strong>`;
+        } else {
+            resultDiv.innerHTML = "الاختصار غير موجود في القاموس.";
+        }
+    }
+
+    // إضافة مستمع لحدث "Enter" للبحث عند الضغط على المفتاح
+    document.getElementById("abbreviation").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // منع السلوك الافتراضي (مثل إرسال النموذج)
+            showTranslation(); // استدعاء دالة عرض الترجمة
+        }
+    });
+
+    // تعطيل أدوات المطور
+    document.addEventListener("keydown", function(e) {
+        if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73)) {
+            e.preventDefault(); // منع F12 و Ctrl+Shift+I
+        }
+    });
+</script>
+
+</body>
+</html>
